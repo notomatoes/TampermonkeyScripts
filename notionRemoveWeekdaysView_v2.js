@@ -34,13 +34,13 @@
 
             // 根据原始值进行修改
             if (originalLeft === 'calc(14.2857%)') {
-                element.style.left = 'calc(0%)';
-            } else if (originalLeft === 'calc(28.5714%)') {
                 element.style.left = 'calc(20%)';
-            } else if (originalLeft === 'calc(42.8571%)') {
+            } else if (originalLeft === 'calc(28.5714%)') {
                 element.style.left = 'calc(40%)';
-            } else if (originalLeft === 'calc(57.1429%)') {
+            } else if (originalLeft === 'calc(42.8571%)') {
                 element.style.left = 'calc(60%)';
+            } else if (originalLeft === 'calc(57.1429%)') {
+                element.style.left = 'calc(80%)';
             } else if (originalLeft === 'calc(71.4286%)') {
                 element.style.left = 'calc(80%)';
             }
