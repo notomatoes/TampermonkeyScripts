@@ -3,7 +3,7 @@
 // @namespace    http://tampermonkey.net/
 // @version      1.0
 // @description  Remove a specific div element using MutationObserver
-// @match        https://www.notion.so/huopijiu/374b961cc07e47d0b76922377836b7e5*
+// @match        https://www.notion.so/huopijiu/374b961cc07e47d0b76922377836b7e5?v=1f594d7515204f4c84f0bff4db4e3460
 // @grant        none
 // ==/UserScript==
 
@@ -13,6 +13,9 @@
     // 定义要删除的div的XPath
     var xpath = '//*[@id="notion-app"]/div/div[1]/div/div[1]/main/div/div[5]/div/div/div/div[3]/div/div[6]';
     var dataBlockId = '374b961c-c07e-47d0-b769-22377836b7e5';
+    var styleId = 'div[style="flex-grow: 1; flex-basis: 0px; text-align: center; font-size: 12px; height: 24px; color: rgba(255, 255, 255, 0.282);"]'
+
+
 
     // 创建 MutationObserver 实例
     var observer = new MutationObserver(function(mutationsList, observer) {
@@ -21,6 +24,16 @@
         if (element && element.getAttribute('data-block-id') === dataBlockId) {
             element.remove();
         }
+
+        var divElements = document.querySelectorAll(styleId);
+
+        // 检查是否找到了满足条件的div元素
+        if (divElements.length > 5) {
+            // 删除最后两个div元素
+            divElements[divElements.length - 1].remove();
+            divElements[divElements.length - 2].remove();
+        }
+
 
         // 获取所有具有指定类的元素
         var elements = document.querySelectorAll('.notion-selectable.notion-page-block.notion-collection-item');
